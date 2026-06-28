@@ -12,9 +12,6 @@ var _sample_interval: float = 10.0
 var _sample_timer: float = 0.0
 var _leak_threshold_mb: float = 10.0
 
-func _ready() -> void:
-	pass
-
 func _process(delta: float) -> void:
 	if not _is_checking:
 		return

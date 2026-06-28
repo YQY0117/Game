@@ -11,9 +11,6 @@ var _memory_samples: Array[float] = []
 var _sample_interval: float = 1.0
 var _sample_timer: float = 0.0
 
-func _ready() -> void:
-	pass
-
 func _process(delta: float) -> void:
 	if not _is_profiling:
 		return

@@ -103,12 +103,15 @@ func _calculate_decel_factor(t: float) -> float:
 	var ratio := clampf(t / DECEL_TIME, 0.0, 1.0)
 	return 1.0 - pow(ratio, 2.0)
 
+var _last_position: Vector2 = Vector2.ZERO
+
 func _emit_signals() -> void:
-	if position != _last_velocity:
+	if global_position != _last_position:
 		position_changed.emit(global_position)
+		_last_position = global_position
 	if velocity != _last_velocity:
 		velocity_changed.emit(velocity)
-	_last_velocity = velocity
+		_last_velocity = velocity
 
 func _update_base_speed() -> void:
 	var k := 1.8

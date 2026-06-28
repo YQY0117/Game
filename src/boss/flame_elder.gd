@@ -19,10 +19,10 @@ func _execute_attack() -> void:
 			_flame_burst()
 
 func _fire_barrage() -> void:
-	pass
+	push_warning("FlameElder: _fire_barrage() not implemented")
 
 func _flame_dash() -> void:
-	pass
+	push_warning("FlameElder: _flame_dash() not implemented")
 
 func _flame_burst() -> void:
-	pass
+	push_warning("FlameElder: _flame_burst() not implemented")

@@ -111,11 +111,11 @@ stories:
     name: "Polish: Final Bug Fixes"
     file: "production/epics/qa/story-004-bug-fixes.md"
     priority: nice-to-have
-    status: backlog
+    status: done
     owner: ""
     estimate_days: 0.5
     blocker: ""
-    completed: ""
+    completed: "2026-06-28"
 
   - id: "S6-011"
     name: "Release: Trailer"

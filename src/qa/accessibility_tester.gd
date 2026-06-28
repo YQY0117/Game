@@ -5,9 +5,6 @@ signal test_completed(report: Dictionary)
 
 var _test_results: Dictionary = {}
 
-func _ready() -> void:
-	pass
-
 func run_accessibility_tests() -> Dictionary:
 	_test_results = {
 		"keyboard_navigation": _test_keyboard_navigation(),
@@ -20,26 +17,26 @@ func run_accessibility_tests() -> Dictionary:
 
 func _test_keyboard_navigation() -> Dictionary:
 	return {
-		"status": "pass",
-		"details": "所有UI元素可通过键盘导航"
+		"status": "not_implemented",
+		"details": "键盘导航测试尚未实现"
 	}
 
 func _test_color_contrast() -> Dictionary:
 	return {
-		"status": "pass",
-		"details": "颜色对比度符合WCAG 2.1 AA标准"
+		"status": "not_implemented",
+		"details": "颜色对比度测试尚未实现"
 	}
 
 func _test_font_size() -> Dictionary:
 	return {
-		"status": "pass",
-		"details": "字体大小可读，最小12px"
+		"status": "not_implemented",
+		"details": "字体大小测试尚未实现"
 	}
 
 func _test_screen_reader_support() -> Dictionary:
 	return {
-		"status": "pass",
-		"details": "支持屏幕阅读器"
+		"status": "not_implemented",
+		"details": "屏幕阅读器测试尚未实现"
 	}
 
 func get_test_results() -> Dictionary:

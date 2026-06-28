@@ -89,7 +89,7 @@ func _update_zoom(delta: float) -> void:
 		zoom = Vector2(_zoom_to, _zoom_to)
 
 func _apply_position() -> void:
-	position = global_position + _shake_offset
+	offset = _shake_offset
 
 func shake(magnitude: float, duration: float) -> void:
 	_shake_magnitude = magnitude

@@ -17,7 +17,7 @@ func _execute_attack() -> void:
 			_frost_breath()
 
 func _ice_rain() -> void:
-	pass
+	push_warning("FrostBeast: _ice_rain() not implemented")
 
 func _frost_breath() -> void:
-	pass
+	push_warning("FrostBeast: _frost_breath() not implemented")

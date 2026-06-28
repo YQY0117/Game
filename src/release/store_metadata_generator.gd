@@ -8,9 +8,6 @@ var _game_description: String = "一款水墨风格的修仙幸存者游戏"
 var _tags: Array[String] = ["roguelike", "survivor", "cultivation", "ink-painting"]
 var _screenshots: Array[String] = []
 
-func _ready() -> void:
-	pass
-
 func generate_metadata() -> Dictionary:
 	var metadata := {
 		"title": _game_title,

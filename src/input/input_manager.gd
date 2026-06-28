@@ -35,7 +35,10 @@ func _ready() -> void:
 
 func _setup_focus_handling() -> void:
 	get_tree().auto_accept_quit = false
-	get_tree().notification_handler = _on_notification
+
+func _notification(what: int) -> void:
+	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
+		_reset_all_input()
 
 func _load_config() -> void:
 	var config_path := "res://data/input_config.json"
@@ -131,7 +134,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _classify_device(event: InputEvent) -> String:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		return "touch"
-	if event is InputEventKey or event is InputEventMouse or event is InputEventMouseButton:
+	if event is InputEventKey or event is InputEventMouse:
 		return "kbm"
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
 		return "gamepad"

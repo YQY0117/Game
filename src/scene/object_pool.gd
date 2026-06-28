@@ -1,6 +1,8 @@
 class_name ObjectPool
 extends Node
 
+const POOL_STORAGE_POS := Vector2(-10000, -10000)
+
 var _pool: Array[Node] = []
 var _scene: PackedScene
 var _initial_size: int
@@ -42,7 +44,7 @@ func return_instance(instance: Node) -> void:
 	instance.visible = false
 	instance.set_process(false)
 	instance.set_physics_process(false)
-	instance.position = Vector2(-1000, -1000)
+	instance.position = POOL_STORAGE_POS
 	_disconnect_signals(instance)
 	_pool.append(instance)
 
@@ -52,12 +54,10 @@ func return_all() -> void:
 			return_instance(child)
 
 func _disconnect_signals(instance: Node) -> void:
-	if instance.has_signal("damage_dealt"):
-		for connection in instance.get_signal_connection_list("damage_dealt"):
-			instance.damage_dealt.disconnect(connection["callable"])
-	if instance.has_signal("entity_died"):
-		for connection in instance.get_signal_connection_list("entity_died"):
-			instance.entity_died.disconnect(connection["callable"])
+	for sig_name in ["damage_dealt", "entity_died", "died"]:
+		if instance.has_signal(sig_name):
+			for connection in instance.get_signal_connection_list(sig_name):
+				instance.get_signal(sig_name).disconnect(connection["callable"])
 
 func get_available_count() -> int:
 	return _pool.size()

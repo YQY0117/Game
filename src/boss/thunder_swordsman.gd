@@ -19,10 +19,10 @@ func _execute_attack() -> void:
 			_thunder_array()
 
 func _thunder_slash() -> void:
-	pass
+	push_warning("ThunderSwordsman: _thunder_slash() not implemented")
 
 func _blink_slash() -> void:
-	pass
+	push_warning("ThunderSwordsman: _blink_slash() not implemented")
 
 func _thunder_array() -> void:
-	pass
+	push_warning("ThunderSwordsman: _thunder_array() not implemented")

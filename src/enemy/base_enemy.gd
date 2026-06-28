@@ -19,6 +19,9 @@ const SPEED_RATIOS := {
 	EnemyType.CLUSTER_INK: 0.6
 }
 
+const LOD_FAR_DISTANCE := 1200.0
+const LOD_MID_DISTANCE := 600.0
+
 var _enemy_type: EnemyType
 var _target: PlayerController
 var _base_speed: float = 100.0
@@ -78,9 +81,9 @@ func _update_lod() -> void:
 	if _target == null:
 		return
 	var distance := global_position.distance_to(_target.global_position)
-	if distance > 1200.0:
+	if distance > LOD_FAR_DISTANCE:
 		_lod_tick_rate = 4
-	elif distance > 600.0:
+	elif distance > LOD_MID_DISTANCE:
 		_lod_tick_rate = 2
 	else:
 		_lod_tick_rate = 1

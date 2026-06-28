@@ -134,13 +134,13 @@ func _execute_attack() -> void:
 			_aoe_attack()
 
 func _melee_attack() -> void:
-	pass
+	push_warning("BossAI: _melee_attack() not implemented")
 
 func _ranged_attack() -> void:
-	pass
+	push_warning("BossAI: _ranged_attack() not implemented")
 
 func _aoe_attack() -> void:
-	pass
+	push_warning("BossAI: _aoe_attack() not implemented")
 
 func take_damage(amount: float) -> void:
 	_health -= amount

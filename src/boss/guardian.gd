@@ -17,7 +17,7 @@ func _execute_attack() -> void:
 			_ink_tide()
 
 func _earthquake() -> void:
-	pass
+	push_warning("Guardian: _earthquake() not implemented")
 
 func _ink_tide() -> void:
-	pass
+	push_warning("Guardian: _ink_tide() not implemented")
