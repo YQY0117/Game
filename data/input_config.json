@@ -1,0 +1,24 @@
+{
+  "dead_zones": {
+    "touch": 0.10,
+    "gamepad": 0.15
+  },
+  "response_curves": {
+    "touch": 1.5,
+    "gamepad": 1.0
+  },
+  "mode_switch": {
+    "min_events": 3,
+    "min_duration_ms": 400,
+    "extra_cooldown_to_touch_ms": 200
+  },
+  "mouse": {
+    "active_threshold_px": 8
+  },
+  "joystick": {
+    "reset_ms": 100
+  },
+  "idle": {
+    "threshold_ms": 50
+  }
+}
