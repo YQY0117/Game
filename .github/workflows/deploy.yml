@@ -31,12 +31,21 @@ jobs:
           include-templates: true
 
       - name: Import Project
-        run: godot --headless --import 2>&1 || true
+        run: |
+          echo "Godot version:"
+          godot --version 2>&1
+          echo "Export templates:"
+          ls ~/.local/share/godot/export_templates/ 2>&1 || echo "No templates dir"
+          echo "Importing..."
+          godot --headless --import 2>&1 || true
 
       - name: Export Web
         run: |
           mkdir -p build/web
-          godot --headless --export-release "Web" build/web/index.html 2>&1
+          echo "Exporting..."
+          godot --headless --export-release "Web" build/web/index.html 2>&1 || true
+          echo "Export finished with code $?"
+          ls -la build/web/ 2>&1 || echo "No build/web directory"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
