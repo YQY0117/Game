@@ -47,7 +47,7 @@ func test_state_change_signal() -> void:
 	assert_str(state_changes[0]).is_equal("idle")
 
 func test_tell_color() -> void:
-	assert_color(BossAI.TELL_COLOR).is_equal(Color("#B8403A"))
+	assert_that(BossAI.TELL_COLOR).is_equal(Color("#B8403A"))
 
 func test_clearance_radius_multiplier() -> void:
 	assert_float(_boss.get_clearance_radius()).is_equal(100.0)

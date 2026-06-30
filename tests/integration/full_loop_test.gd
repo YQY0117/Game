@@ -18,7 +18,7 @@ func before_test() -> void:
 	
 	_camera.set_target(_player)
 	_realm_progression.set_player(_player)
-	_technique_manager.set_owner(_player)
+	_technique_manager.set_player_owner(_player)
 	_wave_manager.set_player(_player)
 
 func after_test() -> void:

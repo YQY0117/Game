@@ -77,8 +77,10 @@ func _process(delta: float) -> void:
 func _update_fade(delta: float) -> void:
 	_fade_timer += delta
 	var progress := clampf(_fade_timer / FADE_DURATION, 0.0, 1.0)
-	_current_alpha = lerp(_current_alpha, _target_alpha, progress)
-	modulate.a = _current_alpha
+	_current_alpha = lerpf(_current_alpha, _target_alpha, progress)
+	for child in get_children():
+		if child is CanvasItem:
+			child.modulate.a = _current_alpha
 	if progress >= 1.0:
 		_is_fading = false
 

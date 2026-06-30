@@ -19,7 +19,7 @@ func _setup_slots() -> void:
 		_equipped_techniques.append(null)
 		_cooldown_timers.append(0.0)
 
-func set_owner(owner: PlayerController) -> void:
+func set_player_owner(owner: PlayerController) -> void:
 	_owner = owner
 
 func set_enemies(enemies: Array[BaseEnemy]) -> void:

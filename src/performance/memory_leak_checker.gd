@@ -19,7 +19,8 @@ func _process(delta: float) -> void:
 	_sample_timer += delta
 	if _sample_timer >= _sample_interval:
 		_sample_timer = 0.0
-		var memory_mb := OS.get_memory_info().physical / 1024.0 / 1024.0
+		var mem_info := OS.get_memory_info()
+		var memory_mb: float = float(mem_info.get("physical", 0)) / 1024.0 / 1024.0
 		_memory_samples.append(memory_mb)
 		_check_for_leaks()
 	if _check_timer >= _check_duration:

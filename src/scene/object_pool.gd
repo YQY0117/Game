@@ -32,7 +32,7 @@ func get_instance() -> Node:
 		else:
 			return null
 	
-	var instance := _pool.pop_back()
+	var instance: Node = _pool.pop_back()
 	instance.visible = true
 	instance.set_process(true)
 	instance.set_physics_process(true)

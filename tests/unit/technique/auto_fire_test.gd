@@ -11,7 +11,7 @@ func before_test() -> void:
 	_player = PlayerController.new()
 	_player.global_position = Vector2(500, 500)
 	_manager = TechniqueManager.new()
-	_manager.set_owner(_player)
+	_manager.set_player_owner(_player)
 	
 	_technique1 = TechniqueData.new()
 	_technique1.id = "flame_palm"

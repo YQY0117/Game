@@ -49,5 +49,5 @@ func test_max_realm_is_6() -> void:
 	assert_int(_progression.get_current_realm()).is_equal(6)
 
 func test_realm_colors() -> void:
-	assert_color(RealmProgression.REALM_COLORS[1]).is_equal(Color("#4A7C59"))
-	assert_color(RealmProgression.REALM_COLORS[6]).is_equal(Color("#FFFFFF"))
+	assert_that(RealmProgression.REALM_COLORS[1]).is_equal(Color("#4A7C59"))
+	assert_that(RealmProgression.REALM_COLORS[6]).is_equal(Color("#FFFFFF"))

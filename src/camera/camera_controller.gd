@@ -55,8 +55,8 @@ func _update_follow(delta: float) -> void:
 	var half_w := viewport_size.x / 2.0
 	var half_h := viewport_size.y / 2.0
 	
-	var dx := abs(target_pos.x - camera_pos.x)
-	var dy := abs(target_pos.y - camera_pos.y)
+	var dx: float = abs(target_pos.x - camera_pos.x)
+	var dy: float = abs(target_pos.y - camera_pos.y)
 	
 	if dx > half_w - HARD_FOLLOW_MARGIN_X or dy > half_h - HARD_FOLLOW_MARGIN_Y:
 		global_position = target_pos.round()
@@ -82,8 +82,8 @@ func _update_zoom(delta: float) -> void:
 	if _zoom_timer > 0.0:
 		_zoom_timer -= delta
 		var progress := 1.0 - (_zoom_timer / _zoom_duration)
-		var cubic_progress := cubic_interpolate(0.0, 1.0, progress, progress, progress, progress)
-		var current_zoom := lerp(_zoom_from, _zoom_to, cubic_progress)
+		var cubic_progress: float = cubic_interpolate(0.0, 1.0, progress, progress, progress)
+		var current_zoom: float = lerpf(_zoom_from, _zoom_to, cubic_progress)
 		zoom = Vector2(current_zoom, current_zoom)
 	else:
 		zoom = Vector2(_zoom_to, _zoom_to)
