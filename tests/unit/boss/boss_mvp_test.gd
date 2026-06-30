@@ -8,9 +8,13 @@ var _guardian: Guardian
 
 func before_test() -> void:
 	_flame_elder = FlameElder.new()
+	_flame_elder._setup_enemy()
 	_frost_beast = FrostBeast.new()
+	_frost_beast._setup_enemy()
 	_thunder_swordsman = ThunderSwordsman.new()
+	_thunder_swordsman._setup_enemy()
 	_guardian = Guardian.new()
+	_guardian._setup_enemy()
 
 func after_test() -> void:
 	_flame_elder.free()
