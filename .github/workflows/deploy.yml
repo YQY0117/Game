@@ -21,23 +21,10 @@ jobs:
   export:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    container:
+      image: barichello/godot-ci:4.6.3
     steps:
       - uses: actions/checkout@v4
-
-      - name: Download Godot
-        run: |
-          wget -q https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip
-          unzip -q Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip
-          chmod +x Godot_v${GODOT_VERSION}-stable_linux.x86_64
-          sudo mv Godot_v${GODOT_VERSION}-stable_linux.x86_64 /usr/local/bin/godot
-
-      - name: Download Export Templates
-        run: |
-          mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-          wget --timeout=600 --tries=3 https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz -O templates.tpz
-          cd ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-          unzip -o ../../../templates.tpz
-          if [ -d "templates" ]; then mv templates/* . && rmdir templates; fi
 
       - name: Import Project
         run: godot --headless --import 2>&1 || true
