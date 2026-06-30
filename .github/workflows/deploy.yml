@@ -5,20 +5,11 @@ on:
     branches: [main]
   workflow_dispatch:
 
-env:
-  GODOT_VERSION: 4.6.3
-
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
-  export:
+  export-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -31,34 +22,15 @@ jobs:
           include-templates: true
 
       - name: Import Project
-        run: |
-          echo "Godot version:"
-          godot --version 2>&1
-          echo "Export templates:"
-          ls ~/.local/share/godot/export_templates/ 2>&1 || echo "No templates dir"
-          echo "Importing..."
-          godot --headless --import 2>&1 || true
+        run: godot --headless --import 2>&1 || true
 
       - name: Export Web
         run: |
           mkdir -p build/web
-          echo "Exporting..."
-          godot --headless --export-release "Web" build/web/index.html 2>&1 || true
-          echo "Export finished with code $?"
-          ls -la build/web/ 2>&1 || echo "No build/web directory"
+          godot --headless --export-release "Web" build/web/index.html 2>&1
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: build/web
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: export
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
