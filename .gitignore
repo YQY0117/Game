@@ -42,7 +42,6 @@ dist/
 .godot/
 *.uid
 *.translation
-export_presets.cfg
 # Uncomment if using Godot:
 # *.import
 
