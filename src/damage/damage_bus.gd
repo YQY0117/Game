@@ -1,4 +1,3 @@
-class_name DamageBus
 extends Node
 
 signal damage_dealt(event: DamageEvent)

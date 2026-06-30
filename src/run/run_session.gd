@@ -1,4 +1,3 @@
-class_name RunSession
 extends Node
 
 signal run_state_changed(old_state: String, new_state: String)

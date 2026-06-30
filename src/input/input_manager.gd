@@ -1,4 +1,3 @@
-class_name InputManager
 extends Node
 
 signal input_mode_changed(new_mode: String)
@@ -182,10 +181,10 @@ func _handle_touch_event(event: InputEvent) -> void:
 	
 	if event is InputEventScreenDrag and _joystick_active:
 		if event.index == _primary_touch_index:
-			var delta := event.position - _joystick_center
+			var delta: Vector2 = event.position - _joystick_center
 			if delta.length() > JOYSTICK_RADIUS:
 				delta = delta.normalized() * JOYSTICK_RADIUS
-			var raw := delta / JOYSTICK_RADIUS
+			var raw: Vector2 = delta / JOYSTICK_RADIUS
 			_touch_joystick_vector = _apply_deadzone_and_curve(raw)
 
 var _touch_joystick_vector: Vector2 = Vector2.ZERO
